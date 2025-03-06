@@ -1,0 +1,13 @@
+{
+    "name": "Test App",
+    "version": "1.0.0",
+    "config": {
+        "theme": "dark",
+        "notifications": true,
+        "timeout": 30
+    },
+    "dependencies": {
+        "lodash": "^4.17.21",
+        "express": "^4.18.2"
+    }
+}

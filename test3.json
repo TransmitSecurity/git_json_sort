@@ -1,0 +1,11 @@
+{
+    "dog": "bark",
+    "cat": "meow",
+    "bird": "tweet",
+    "fish": {
+        "shark": "dangerous",
+        "goldfish": "friendly",
+        "whale": "huge"
+    },
+    "numbers": [3, 1, 2]
+}
