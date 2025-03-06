@@ -83,23 +83,33 @@ To ensure all committed JSON files are sorted, set up a Git pre-commit hook usin
 npm install --save-dev husky lint-staged
 ```
 
-2️⃣ Enable Husky hooks:
-
-```sh
-npx husky install
-```
-
-3️⃣ Add a Git pre-commit hook:
-
-```sh
-npx husky add .husky/pre-commit "npx lint-staged"
-```
-
-4️⃣ Modify package.json to enforce sorting before commits:
+2️⃣ Add Husky to Your package.json
+In your package.json, add the following:
 
 ```json
+"husky": {
+    "hooks": {
+        "pre-commit": "npx lint-staged"
+    }
+},
 "lint-staged": {
     "*.json": "npm run sort -- -i"
+}
+```
+
+**OR** to sort only files in the `sorted/` folder, set the package.json as follows:
+
+```json
+"husky": {
+    "hooks": {
+        "pre-commit": "npx lint-staged"
+    }
+},
+"lint-staged": {
+    "sorted/**/*.json": [
+        "npm run sort -- -i",
+        "git add"
+    ]
 }
 ```
 
@@ -124,6 +134,26 @@ git commit -m "Sorted JSON files"
 Modify "path", "name", "id" sorting priority in src/sortJson.ts
 Adjust "sorted" output directory as needed
 Set different sorting rules for special cases
+
+## 🔍 Comparison: TypeScript JSON Sorter vs. jq Tool
+
+Both our TypeScript JSON sorter and the jq CLI tool can sort JSON, but they differ in capabilities, flexibility, and ease of integration.
+
+## **Feature Comparison Table**
+
+| Feature                  | TypeScript JSON Sorter | `jq` Tool (`jq --sort-keys`) |
+|--------------------------|----------------------|---------------------------|
+| **Recursive Key Sorting** | ✅ Yes | ✅ Yes |
+| **Sorts Arrays of Objects** | ✅ Yes, by `"path"`, `"name"`, `"id"` | ❌ No, just keeps order |
+| **Sorts Keys at Any Depth** | ✅ Yes | ✅ Yes |
+| **Preserves Formatting (Indentation)** | ✅ Yes (pretty-printing enabled) | ✅ Yes |
+| **Batch Processing (Multiple Files)** | ✅ Yes (processes all files in `unsorted/`) | ❌ No (must run per file) |
+| **Modifies Files Inline** | ✅ Yes (`-i` flag) | ✅ Yes (with `jq > file`) |
+| **Filters or Extracts Data** | ❌ No | ✅ Yes |
+| **Git Pre-Commit Hook Friendly** | ✅ Yes (via Husky) | ✅ Possible, but manual setup needed |
+| **Platform Compatibility** | ✅ Cross-platform (Node.js) | ✅ Cross-platform (Linux/macOS/WSL) |
+| **Command Complexity** | ✅ Simple (`npm run sort`) | ❌ Complex (`jq --sort-keys '.' file.json > sorted.json`) |
+| **Ease of Integration with Node.js Projects** | ✅ Seamless | ❌ Requires shell commands |
 
 ## 📜 License
 
