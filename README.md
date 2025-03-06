@@ -87,11 +87,6 @@ npm install --save-dev husky lint-staged
 In your package.json, add the following:
 
 ```json
-"husky": {
-    "hooks": {
-        "pre-commit": "npx lint-staged"
-    }
-},
 "lint-staged": {
     "*.json": "npm run sort -- -i"
 }
@@ -100,22 +95,16 @@ In your package.json, add the following:
 **OR** to sort only files in the `sorted/` folder, set the package.json as follows:
 
 ```json
-"husky": {
-    "hooks": {
-        "pre-commit": "npx lint-staged"
-    }
-},
 "lint-staged": {
     "sorted/**/*.json": [
-        "npm run sort -- -i",
-        "git add"
+        "npm run sort -- -i"
     ]
 }
 ```
 
 Now, whenever you commit, all JSON files will be automatically sorted before being staged. 🎯
 
-## 🎯 Example: Full Workflow
+## 🎯 Example 1: Manual Workflow
 
 ```sh
 # Add JSON files
@@ -127,6 +116,29 @@ npm run sort
 # Commit sorted JSON files
 git add sorted/*
 git commit -m "Sorted JSON files"
+```
+
+## 🎯 Example 2: Fully Automated Workflow
+
+```sh
+# Add a new unsorted JSON file (this remains untouched)
+echo '{"z":3,"a":1,"b":2}' > unsorted/example.json
+
+# Copy the file into sorted/ before committing
+cp unsorted/example.json sorted/example.json
+
+# The original file stays unsorted, while sorted/ is prepared for tracking
+# Stage the file
+git add sorted/example.json
+
+# At this point, the file is staged before sorting happens.
+
+#Try to commit
+git commit -m "Added sorted JSON"
+
+# If Husky modified the file, re-add it and commit again
+git add sorted/example.json
+git commit -m "Added sorted JSON"
 ```
 
 ## 🛠️ Customization
