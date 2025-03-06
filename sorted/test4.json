@@ -1,0 +1,45 @@
+{
+    "a": {
+        "b": "first",
+        "c": {
+            "d": "middle",
+            "e": {
+                "b": "value",
+                "f": "inside",
+                "nestedArray": [
+                    {
+                        "id": 1,
+                        "name": "Alpha",
+                        "extra": "data1",
+                        "innerNested": {
+                            "delta": "middle",
+                            "epsilon": "almost last",
+                            "zeta": "last"
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "name": "Beta",
+                        "extra": "data2",
+                        "innerNested": {
+                            "alpha": "first",
+                            "beta": "second",
+                            "gamma": "third"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "arrayAtRoot": [
+        {
+            "path": "/first",
+            "other": "different data"
+        },
+        {
+            "path": "/second",
+            "other": "some data"
+        }
+    ],
+    "z": "last"
+}

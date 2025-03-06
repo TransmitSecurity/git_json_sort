@@ -1,0 +1,21 @@
+{
+    "zebra": "animal",
+    "apple": "fruit",
+    "nested": {
+        "gamma": "third",
+        "beta": "second",
+        "alpha": "first"
+    },
+    "array": [
+        {
+            "last": 3,
+            "first": 1,
+            "middle": 2
+        },
+        {
+            "y": "yes",
+            "x": "no",
+            "z": "maybe"
+        }
+    ]
+}
