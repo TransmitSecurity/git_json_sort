@@ -13,16 +13,19 @@ This project provides a Node.js TypeScript tool to recursively sort JSON files,
 
 ```python
 project-root/
-├── src/
+├── .husky/              # Husky Git hooks (pre-commit hook lives here)
+│   ├── pre-commit      # Runs lint-staged before every commit
+├── src/                 # Source files (TypeScript)
 │   ├── sortJson.ts     # Main sorting script
-├── unsorted/           # Place JSON files here for batch sorting
+├── unsorted/            # Place original, unsorted JSON files here
 │   ├── example.json
-├── sorted/             # Output folder for sorted JSON files
-├── package.json        # Project metadata
-├── tsconfig.json       # TypeScript config
-├── .gitignore          # Git ignored files
-├── .husky/             # Git hooks
-├── README.md           # This file
+├── sorted/              # Sorted JSON files (Git commits from here)
+│   ├── example.json
+├── .gitignore           # Ignore node_modules, logs, etc.
+├── package.json         # Project metadata & dependencies
+├── tsconfig.json        # TypeScript configuration
+├── README.md            # This file (Project documentation)
+├── node_modules/        # Installed dependencies (ignored in Git)
 ```
 
 ## 📦 Installation
