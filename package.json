@@ -13,7 +13,20 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.13.9",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "lint-staged": {
+    "sorted/**/*.json": [
+      "npm run sort -- -i",
+      "git add"
+    ]
   }
 }
