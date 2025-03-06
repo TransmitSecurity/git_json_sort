@@ -6,14 +6,15 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/sortJson.js",
-    "sort": "ts-node src/sortJson.ts"
+    "sort": "ts-node src/sortJson.ts",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.13.9",
-    "husky": "^9.1.7",
+    "husky": "^8.0.3",
     "lint-staged": "^15.4.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
