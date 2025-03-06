@@ -21,8 +21,7 @@
   },
   "lint-staged": {
     "sorted/**/*.json": [
-      "npm run sort -- -i",
-      "git add"
+      "npm run sort -- -i"
     ]
   }
 }
