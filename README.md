@@ -143,8 +143,8 @@ git commit -m "Added sorted JSON"
 
 ## 🛠️ Customization
 
-Modify "path", "name", "id" sorting priority in src/sortJson.ts
-Adjust "sorted" output directory as needed
+- Modify "path", "name", "id" sorting priority in src/sortJson.ts
+- Adjust "sorted" output directory as needed
 Set different sorting rules for special cases
 
 ## 🔍 Comparison: TypeScript JSON Sorter vs. jq Tool
